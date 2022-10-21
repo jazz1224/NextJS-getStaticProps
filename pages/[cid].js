@@ -13,12 +13,19 @@ function CategoryDetail(props) {
   );
 }
 
+
+async function getData(){
+    const filePath = path.join(process.cwd(), "data", "bigcategory.json");
+    const jsonData = await fs.readFile(filePath);
+    const data = JSON.parse(jsonData);
+    return data
+}
+
+
 export async function getStaticProps(context) {
   const { params } = context;
   const categoryId = params.cid;
-  const filePath = path.join(process.cwd(), "data", "bigcategory.json");
-  const jsonData = await fs.readFile(filePath);
-  const data = JSON.parse(jsonData);
+  const data = await getData()
   const category = data.categories.find((a) => a.id === categoryId);
 
   return {
@@ -29,12 +36,12 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
+
+    const data = await getData()
+    const ids = data.categories.map((a)=>a.id)
+    const pathsWithParams = ids.map((aaa)=>({params:{cid : aaa}}))
   return {
-    paths: [
-      { params: { cid: "c1" } },
-      { params: { cid: "c2" } },
-      { params: { cid: "c3" } },
-    ],
+    paths: pathsWithParams,
     fallback: false,
   };
 }
