@@ -1,7 +1,7 @@
 {
   "categories": [
-    { "id" : 1, "category": "animal", "image": "/images/bigcategory/animal.jpg" },
-    { "id" : 2, "category": "body", "image": "/images/bigcategory/body.jpg" },
-    { "id" : 3, "category": "love", "image": "/images/bigcategory/love.jpg" }
+    { "id" : "c1", "category": "animal", "image": "/images/bigcategory/animal.jpg" },
+    { "id" : "c2", "category": "body", "image": "/images/bigcategory/body.jpg" },
+    { "id" : "c3", "category": "love", "image": "/images/bigcategory/love.jpg" }
   ]
 }

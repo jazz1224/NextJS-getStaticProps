@@ -1,16 +1,16 @@
 import { Fragment } from "react";
 import fs from "fs/promises";
 import path from "path";
-
+import Link from 'next/link';
 export default function Home(props) {
   const { categories } = props;
 
   return (
     <Fragment>
-      <h1>asdas</h1>
+      <h1>Choose your dream about</h1>
       <ul>
         {categories.map((a) => {
-          return <li key={a.id}>{a.category}</li>;
+          return <li key={a.id}><Link href={`${a.id}`}>{a.category}</Link></li>;
         })}
       </ul>
     </Fragment>
